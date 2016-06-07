@@ -68,3 +68,15 @@ func sms_status() {
 		fmt.Println(resp.ErrorDescription())
 	}
 }
+
+func send_sms_batch(mobiles string, message string) {
+	sender := luosimao.NewSMSSender(smsAuth, luosimao.JSON)
+	resp, err := sender.BatchSend(luosimao.BatchSMSRequest{MobileList: mobiles, Message: message, Time: ""}, 1000)
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		b, _ := json.Marshal(resp)
+		fmt.Println(string(b))
+		fmt.Println(resp.ErrorDescription())
+	}
+}
