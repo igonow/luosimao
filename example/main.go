@@ -16,8 +16,8 @@ func main() {
 	smsAuth = luosimao.Authorization{UserName: "api", Password: ""}
 
 	send_voice("13400000000", 123)
-	send_sms("13400000000", "您的验证码是:1234 【公司签名】")
-	send_sms_batch("13400000000,13400000000", "您的验证码是:1234 【公司签名】")
+	send_sms("13263143441", "您的验证码是:1234 【公司签名】")
+	send_sms_batch("13400000000,13400000001", "您的验证码是:1234 【公司签名】")
 	voice_status()
 	sms_status()
 }
