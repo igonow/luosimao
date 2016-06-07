@@ -61,12 +61,16 @@ func (p *SMSSender) Send(req SMSRequest, timeout int64) (response Response, err 
 }
 
 func (p *SMSSender) BatchSend(req BatchSMSRequest, timeout int64) (response Response, err error) {
+	if req.Mobiles == "" {
+		return
+	}
+
 	to := time.Duration(timeout)
 
 	request := gorequest.New().Timeout(to * time.Millisecond).Proxy(p.Proxy)
 
 	params := url.Values{}
-	params.Add("mobile_list", req.MobileList)
+	params.Add("mobile_list", req.Mobiles)
 	params.Add("message", req.Message)
 	params.Add("time", req.Time)
 
